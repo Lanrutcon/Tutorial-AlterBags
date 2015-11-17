@@ -2,35 +2,12 @@ local Addon = CreateFrame("FRAME", "AlterBags");
 
 local itemTable = {};
 
------------------------
---	helpful functions
------------------------
-
-local function getNumOfBags()
-	local numBags = 0;
-	for i = 0, 5 do
-		if(GetBagName(i)) then
-			numBags = numBags + 1;
-		end
-	end
-	return numBags;
-end
-
-local function getNumOfSlots()
-	local numSlots = 0;
-	for i = 0, 5 do
-		if(GetContainerNumSlots(i)) then
-			numSlots = numSlots + GetContainerNumSlots(i);
-		end
-	end
-end
-
 
 local function searchBags()
 	table.wipe(itemTable[UnitName("player")]);
-	local numBags, numSlotBags = getNumOfBags();
-	for i = 0, numBags do
-		numSlotBags = GetContainerNumSlots(i) or 0; --0 if player has something like this: [X][bag3][X][bag2][bag1]
+	local numSlotBags;
+	for i = 0, 4 do
+		numSlotBags = GetContainerNumSlots(i);
 		for j = 1, numSlotBags do
 			if(GetContainerItemLink(i,j)) then
 				itemTable[UnitName("player")][GetItemInfo(GetContainerItemLink(i,j))] = GetItemCount(GetContainerItemLink(i,j)); --check GetItemCount and GetContainerItemInfo
