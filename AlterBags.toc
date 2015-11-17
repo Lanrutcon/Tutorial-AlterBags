@@ -1,0 +1,9 @@
+## Interface: 40300
+## Title: AlterBags
+## Author: Lanrutcon
+## Version: 1.0
+## DefaultState: Enabled
+## Notes: Reads your bags and show the items when playing with others characters
+## SavedVariables: AlterBagsSV
+
+AlterBags.lua
